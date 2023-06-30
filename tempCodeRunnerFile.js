@@ -1,0 +1,1 @@
+console.log("search 5",bst.search(5));
