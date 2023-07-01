@@ -27,7 +27,7 @@ class binaryST{
                 root.left = node;
             }
             else{
-                this.insertValue(root.left,node)
+                this.insertNode(root.left,node)
             }
         }
         else{
@@ -35,37 +35,12 @@ class binaryST{
                 root.right= node;
             }
             else{
-            this.insertValue(root.right,node);
+            this.insertNode(root.right,node);
            }
         }
     }
 
     
-
-    search(value){
-        if(this.root===null){
-            return "empty";
-        }
-        let curr = this.root;
-        if(curr.value === value){
-            return "found";
-        }
-        while(curr.left !==null || curr.right!==null){
-            if(value < curr.value ){
-                if(curr.left.value===value){
-                    return "found"
-                }
-                curr=curr.left
-            }
-            else if(value > curr.value){
-                if(curr.right.value ===value){
-                    return "found";
-                }
-                curr= curr.right;
-            }
-        }
-        return "not found"
-    }
 
     dfsPreOrder(root){
         if(root){
@@ -74,14 +49,33 @@ class binaryST{
             this.dfsPreOrder(root.right );
         }
     }
+
+    dfsPostOrder(){
+        let data=[];
+        function traversal(node){
+            if(node.left){
+                traversal(node.left);
+            }
+            if(node.right){
+                traversal(node.right);
+            }
+            data.push(node.value);
+        }
+        traversal(this.root)
+        console.log("post order",data)
+
+    }
 }
 
 
 let bst1 = new binaryST();
 bst1.insert(10);
-bst1.insert(90);
+bst1.insert(8);
 bst1.insert(6);
+bst1.insert(3);
+bst1.insert(15);
+bst1.insert(20);
+
 console.log(bst1)
-console.log(bst1.search(6))
-console.log(bst1.search(5))
 bst1.dfsPreOrder(bst1.root);
+bst1.dfsPostOrder()
