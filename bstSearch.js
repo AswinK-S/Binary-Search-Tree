@@ -27,7 +27,7 @@ class binaryST{
                 root.left = node;
             }
             else{
-                this.insertValue(root.left,node)
+                this.insertNode(root.left,node)
             }
         }
         else{
@@ -35,7 +35,7 @@ class binaryST{
                 root.right= node;
             }
             else{
-            this.insertValue(root.right,node);
+            this.insertNode(root.right,node);
            }
         }
     }
